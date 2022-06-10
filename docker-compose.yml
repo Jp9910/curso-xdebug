@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  php: 
+    image: php-xdebug
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    container_name: ctn-xdebug
+    build: .
+    ports:
+      - "8123:8123"
+    volumes:
+      - .:/app
+      - ./99-xdebug.ini:/usr/local/etc/php/conf.d/99-xdebug.ini
